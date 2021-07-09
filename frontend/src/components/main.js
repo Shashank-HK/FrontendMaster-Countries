@@ -9,14 +9,13 @@ import Card from './card.js';
 import NavBar from './navbar.js';
 
 const Main = (props) => {
-    const [theme, setTheme] = useState(props.location.state.theme_child ? props.location.state.theme_child : 'light');
+    const [theme, setTheme] = useState(props.location.state!=undefined ? props.location.state.theme_child : 'light');
     const [countries, setCountries] = useState([]);
     const [region, setRegion] = useState('');
     const [search, setSearch] = useState('');
     const [listOpen, setListOpen] = useState(false);
 
     useEffect (() => {
-        console.log("in main");
         axios.get(api.all)
         .then((res) => res.data)
         .then((allData) => {
@@ -66,7 +65,7 @@ const Main = (props) => {
                 <Dropdown />
             </div>
             <Container id="container">
-            <Grid className="grid-container" container alignItems="stretch" spacing={7}>
+            <Grid className="grid-container" container alignItems="stretch" spacing={6}>
             {countries.map((country) => {
                 if(country.region.includes(region) && country.name.toLowerCase().includes(search.toLowerCase())){
                 return(
