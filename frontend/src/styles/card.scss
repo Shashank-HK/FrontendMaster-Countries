@@ -1,0 +1,28 @@
+#card {
+    background-color: var(--element);
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+    cursor: pointer;
+    .img-container {
+        display: inline-block;
+        height: 150px;
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: $border-radius $border-radius 0 0;
+        }
+    }
+    .content {
+        padding: 10px 0 30px 30px;
+        color: var(--text);
+        .country-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+        .info-text {
+            font-weight: bold;
+        }
+    }
+}

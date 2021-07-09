@@ -1,0 +1,23 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+:root {
+    --bg: #{$light-bg};
+    --text: #{$light-text};
+    --element: #{$light-elements};
+    --input: #{$light-input};
+    --shadow-color: #{$shadow-light};
+}
+
+[data-theme=dark] {
+    --bg: #{$dark-bg};
+    --text: #{$dark-text};
+    --element: #{$dark-elements};
+    --input: #{$light-elements};
+    --shadow-color: #{$shadow-dark};
+}

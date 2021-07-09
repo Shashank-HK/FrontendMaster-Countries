@@ -1,0 +1,86 @@
+#main {
+    min-height: 100vh;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    .icon {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    .inline {
+        display: inline;
+    }
+    .input_div {
+        color: var(--text);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 2rem $padding-side;
+        #search-box {
+            display: flex;
+            border-radius: $border-radius;
+            align-items: center;
+            padding-left: 1rem;
+            margin-bottom: 25px;
+            height: 3rem;
+            width: 25rem;
+            background-color: var(--element);
+            box-shadow: $box-shadow;
+            #search-input {
+                border: none;
+                outline: none;
+                background-color: var(--element);
+                color: var(--text);
+                &::placeholder {
+                    color: var(--text);
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+    .dd-wrapper {
+        z-index: 1;
+        height: 3rem;
+        width: 12rem;
+        background-color: var(--element);
+        color: var(--text);
+        box-shadow: $box-shadow;
+        border-radius: $border-radius;
+        cursor: pointer;
+        .dd-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            padding: 0 1rem;
+            height: 100%;
+            .dd-title {
+                display: inline;
+            }
+        }
+        .dd-list {
+            box-shadow: $box-shadow;
+            border-radius: $border-radius;
+            background-color: var(--element);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            margin-top: 5px;
+            .dd-list-item {
+                &:hover {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .grid-container {
+        padding: 0 $padding-side;
+    }
+}
+
+@media screen and (max-width: $med-breakpoint) {
+    #main {
+        .grid-container {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+.navbar {
+    height: 4rem;
+    background-color: var(--element);
+    display: flex;
+    color: var(--text);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 $padding-side;
+    box-shadow: $box-shadow;
+    .title {
+        font-family: inherit;
+        font-size: 22px;
+        font-weight: bold;
+        text-shadow: 0.5px 0 var(--text);
+    }
+    .theme_button {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .theme-text {
+        font-weight: 550;
+        margin-left: 5px;
+    }
+}
+
+@media screen and (max-width: $sm-breakpoint) {
+    .navbar {
+        .title {
+            font-size: 14px;
+        }
+        .theme_button {
+            font-size: 14px;
+        }
+    }
+}

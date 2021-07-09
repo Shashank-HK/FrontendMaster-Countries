@@ -1,0 +1,118 @@
+#country-wrapper {
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    #country {
+        display: flex;
+        padding: 0 $padding-side;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        .link {
+            text-decoration: none;
+            color: inherit;
+            &:hover {
+                font-weight: bold;
+            }
+        }
+        .info-text {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        #back {
+            flex-basis: 100%;
+            margin: 2rem 0;
+            #back-button {
+                text-align: center;
+                padding: 5px 0;
+                font-size: 16px;
+                width: 8rem;
+                height: 1.5rem;
+                background-color: var(--element);
+                box-shadow: $box-shadow;
+                cursor: pointer;
+            }
+        }
+        .flag {
+            flex: 1;
+            img {
+                margin-left: 0;
+                height: 340px;
+                width: 480px;
+            }
+        }
+        .info {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            #title {
+                flex-basis: 100%;
+                font-size: 26px;
+                font-weight: bold;
+            }
+            .info-column {
+                flex: 1;
+            }
+        }
+        .border {
+            flex-basis: 100%;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+            align-items: center;
+            #border-text {
+                flex-basis: 25%;
+                margin-bottom: 10px;
+            }
+            .border-div {
+                .border-button {
+                    display: inline-block;
+                    text-align: center;
+                    box-shadow: $box-shadow;
+                    background-color: var(--element);
+                    padding: 10px;
+                    cursor: pointer;
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $med-breakpoint) {
+    #country-wrapper {
+        #country {
+            .flag {
+                flex: 0 0 100%;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: fill;
+                }
+            }
+            .info {
+                flex: 0 0 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $sm-breakpoint) {
+    #country-wrapper {
+        #country {
+            padding-bottom: 20px;
+            .info {
+                .info-column {
+                    flex: 0 0 100%;
+                }
+            }
+            .border {
+                #border-text {
+                    flex: 0 0 100%;
+                }
+            }
+        }
+    }
+}
