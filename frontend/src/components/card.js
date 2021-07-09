@@ -3,7 +3,7 @@ import {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import routes from '../config/routes';
 
-const Card = ({country}) => {
+const Card = ({country, theme}) => {
 
     const history = useHistory();
     const [code, setCode] = useState(country.alpha3Code);
@@ -11,7 +11,7 @@ const Card = ({country}) => {
     const redirect = () => {
         history.push({
             pathname: `/country/${code}`,
-           state: {code : code}
+           state: {theme : theme}
         })
     }
 

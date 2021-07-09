@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon} from '@fortawesome/free-solid-svg-icons';
 import {useState} from 'react';
 
-const NavBar = (props) => {
+const NavBar = ({selectTheme, curTheme}) => {
 
-    const [theme, setTheme] = useState('light')
+    const [theme, setTheme] = useState(curTheme)
 
     const toggleTheme = () => {
         theme=='dark' ? setTheme('light') : setTheme('dark');
-        props.selectTheme();
+        selectTheme();
     }
 
     return (

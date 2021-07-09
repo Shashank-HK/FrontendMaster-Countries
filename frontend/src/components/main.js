@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Grid } from '@material-ui/core';
+import { Grid, Container } from '@material-ui/core';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faAngleDown} from '@fortawesome/free-solid-svg-icons';
 import {useState, useEffect} from 'react';
@@ -8,8 +8,8 @@ import api from '../config/api.js';
 import Card from './card.js';
 import NavBar from './navbar.js';
 
-const Main = () => {
-    const [theme, setTheme] = useState('light')
+const Main = (props) => {
+    const [theme, setTheme] = useState(props.location.state.theme_child ? props.location.state.theme_child : 'light');
     const [countries, setCountries] = useState([]);
     const [region, setRegion] = useState('');
     const [search, setSearch] = useState('');
@@ -56,7 +56,7 @@ const Main = () => {
     return(
         <>
         <div id="main" data-theme={theme}>
-            < NavBar selectTheme={toggleTheme} />
+            < NavBar selectTheme={toggleTheme} curTheme={theme} />
             <div className="input_div">
                 <div id="search-box">
                 <FontAwesomeIcon className="icon" icon={'fas', faSearch} />
@@ -65,18 +65,20 @@ const Main = () => {
                 </div>
                 <Dropdown />
             </div>
+            <Container id="container">
             <Grid className="grid-container" container alignItems="stretch" spacing={7}>
             {countries.map((country) => {
                 if(country.region.includes(region) && country.name.toLowerCase().includes(search.toLowerCase())){
                 return(
                 <Grid className="grid-item" item key={country.alpha3Code} xs={12} sm={6} lg={3}>
-                    <Card country={country} />
+                    <Card country={country} theme={theme} />
                 </Grid>
                 )
             }
             }
             )}
             </Grid> 
+            </Container>
         </div>
         </>
     )

@@ -2,6 +2,9 @@
     background-color: var(--bg);
     color: var(--text);
     min-height: 100vh;
+    #loading {
+        margin: 10% auto;
+    }
     #country {
         display: flex;
         padding: 0 $padding-side;
@@ -73,6 +76,13 @@
                     background-color: var(--element);
                     padding: 10px;
                     cursor: pointer;
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                }
+                .none-button {
+                    display: inline-block;
+                    text-align: center;
+                    padding: 10px;
                     margin-right: 10px;
                     margin-bottom: 10px;
                 }

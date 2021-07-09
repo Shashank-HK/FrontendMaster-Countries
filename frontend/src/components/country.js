@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactLoading from 'react-loading';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import api from '../config/api.js';
@@ -10,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 const Country = (props) => {
 
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(props.location.state.theme);
     const [countryData, setCountryData] = useState();
     const [borderCountries, setBorders] = useState([]);
     const [languages, setLanguages] = useState();
@@ -27,7 +28,6 @@ const Country = (props) => {
     }, [props.match.params.country])
 
     const getBorderNames = (data) => {
-        let borderObjs = [];
         let first = true;
             data.borders.slice(0,4).map((borderCode) => {
                 axios.get(api.name.replace("country",borderCode))
@@ -47,15 +47,19 @@ const Country = (props) => {
             })
     }
 
-    const toggleTheme = () => {
+    const toggleThemeChild = () => {
         theme=='dark' ? setTheme('light') : setTheme('dark');
     }
+
+    const Loading = () => (
+        <ReactLoading id="loading" color={theme=='dark' ? 'white' : 'black'} type='spin' height={100} width={100} />
+    )
 
     const CountryInfo = () => (
         
         <div id="country">
         <div id="back">
-            <div id="back-button"><Link to={{pathname:routes.homePage}} className="link"><FontAwesomeIcon icon={faArrowLeft} />&nbsp;&nbsp;&nbsp;Back</Link></div>
+            <div id="back-button"><Link to={{pathname:routes.homePage, state: {theme: theme}}} className="link"><FontAwesomeIcon icon={faArrowLeft} />&nbsp;&nbsp;&nbsp;Back</Link></div>
         </div>
         
         <div className="flag">
@@ -67,7 +71,7 @@ const Country = (props) => {
             </div>
             <div className="info-column">
                 <p><span className="info-text">Native Name:</span> {countryData.nativeName}</p>
-                <p><span className="info-text">Population:</span> {countryData.population}</p>
+                <p><span className="info-text">Population:</span> {countryData.population.toLocaleString()}</p>
                 <p><span className="info-text">Region:</span> {countryData.region}</p>
                 <p><span className="info-text">Sub Region:</span> {countryData.subregion}</p>
                 <p><span className="info-text">Capital:</span> {countryData.capital}</p>
@@ -80,9 +84,9 @@ const Country = (props) => {
             <div className="border">
                 <span id="border-text" className="info-text">Border Countries:</span>
                 <div className="border-div">
-                {borderCountries.map((borderCountry) => (
-                    <div class="border-button"><Link className="link" to={{pathname:`/country/${borderCountry.code}`}}>{borderCountry.name}</Link></div>
-                ))}
+                {borderCountries.length>0 ? borderCountries.map((borderCountry) => (
+                    <div class="border-button"><Link className="link" to={{pathname:`/country/${borderCountry.code}`, state: {theme: theme}}}>{borderCountry.name}</Link></div>
+                )) : <div class="none-button">None</div>}
                 </div>
             </div>
         </div>
@@ -91,10 +95,9 @@ const Country = (props) => {
 
     return (
         <>
-       
         <div id="country-wrapper" data-theme={theme}>
-        <NavBar selectTheme={toggleTheme} />
-        {countryData != null && borderCountries.length>0 ?  < CountryInfo /> : <p>Here</p>}
+        <NavBar selectTheme={toggleThemeChild} curTheme={theme} />
+        {countryData != null  ?  < CountryInfo /> : <Loading />}
         </div>
         </>
     )
