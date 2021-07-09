@@ -65,7 +65,7 @@ const Main = (props) => {
                 <Dropdown />
             </div>
             <Container id="container">
-            <Grid className="grid-container" container alignItems="stretch" spacing={6}>
+            <Grid className="grid-container" container alignItems="stretch" spacing={5}>
             {countries.map((country) => {
                 if(country.region.includes(region) && country.name.toLowerCase().includes(search.toLowerCase())){
                 return(

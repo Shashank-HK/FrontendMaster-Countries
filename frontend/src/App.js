@@ -1,4 +1,3 @@
-import './App.scss';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Helmet} from "react-helmet";
 import Main from './components/main.js';
