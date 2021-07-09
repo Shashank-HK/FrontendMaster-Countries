@@ -9,7 +9,7 @@ import Card from './card.js';
 import NavBar from './navbar.js';
 
 const Main = (props) => {
-    const [theme, setTheme] = useState(props.location.state!=undefined ? props.location.state.theme_child : 'light');
+    const [theme, setTheme] = useState(props.location.state!=undefined ? props.location.state.theme : 'light');
     const [countries, setCountries] = useState([]);
     const [region, setRegion] = useState('');
     const [search, setSearch] = useState('');
@@ -30,7 +30,6 @@ const Main = (props) => {
 
     const toggleDropdown = () => {
         setListOpen(!listOpen);
-        console.log(listOpen)
     }
     
     const Dropdown = () => (
